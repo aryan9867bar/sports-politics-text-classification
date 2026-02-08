@@ -3,7 +3,7 @@
 PROBLEM 4: SPORTS vs POLITICS CLASSIFICATION (BBC DATASET)
 ===========================================================
 
-This program classifies BBC news articles into SPORTS or POLITICS.
+This program classifies the BBC news articles into SPORTS or POLITICS.
 
 Feature Representations:
 1. Bag of Words (BoW)
@@ -45,13 +45,13 @@ def load_dataset():
                 with open(os.path.join(folder, file),
                           "r", encoding="utf-8", errors="ignore") as f:
 
-                    # Read document
+                    # Read the document
                     words = f.read().lower().split()
 
-                    # Keep ONLY 25 words (information reduction)
+                    # Keep ONLY the 25 words (information reduction)
                     words = words[:25]
 
-                    # Drop 50% words randomly (noise injection)
+                    # Drop 50% of the words randomly (noise injection)
                     words = [w for w in words if random.random() > 0.5]
 
                     texts.append(" ".join(words))
@@ -61,15 +61,15 @@ def load_dataset():
 
 
 # --------------------------------------------------
-# STEP 2: FEATURE REPRESENTATION WITH STRONG PRUNING
+# STEP 2: FEATURE REPRESENTATION WITH the STRONG PRUNING
 # --------------------------------------------------
 def get_vectorizer(method):
 
     params = dict(
         stop_words="english",
-        max_features=800,       # limit vocabulary
-        min_df=8,               # remove rare words
-        max_df=0.6              # remove overly common words
+        max_features=800,       # limit the vocabulary
+        min_df=8,               # remove the rare words
+        max_df=0.6              # remove overly the common words
     )
 
     if method == "bow":
@@ -112,7 +112,7 @@ def main():
     print("Classes:", Counter(labels))
     print("--------------------------")
 
-    # Use only 50% training to increase difficulty
+    # Use only the 50% of training to increase the difficulty
     X_train_txt, X_test_txt, y_train, y_test = train_test_split(
         texts, labels,
         test_size=0.5,
@@ -135,7 +135,7 @@ def main():
 
 
 # --------------------------------------------------
-# PROGRAM ENTRY POINT
+# THE PROGRAM ENTRY POINT
 # --------------------------------------------------
 if __name__ == "__main__":
     main()
